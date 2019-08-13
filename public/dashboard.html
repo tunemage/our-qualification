@@ -121,11 +121,10 @@
         alert(value.data.qualification)
       })
 
-
-
-
-
-
+      var addQualification = firebase.functions().httpsCallable('addQualification');
+      addQualification().then(function (value) {
+        alert(value.data.qualification)
+      })
     });
   </script>
 

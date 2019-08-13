@@ -18,8 +18,30 @@ admin.initializeApp();
 
 exports.getQualification = functions.https.onCall((data, context) => {
     return {
-        qualification: "基本情報技術者",
+        qualificationName: "基本情報技術者",
         date: "2019-10-01"
     }
 });
 
+exports.addQualification = functions.https.onCall((data, context) => {
+    // admin.firestore().settings({
+    //     timestampsInSnapshots: true
+    // })
+
+    admin.firestore().collection("qualifications").add({
+        qualificationName: "基本情報技術者2",
+        date: "2019-11-01"
+    })
+    //なんか↓これがdeploy時にlinterにひっかかるので要調査
+    // .then(function (docRef) {
+
+    // })
+    // .catch(function (error) {
+
+    //     })
+    //とりあえずダミーを返す
+    return {
+        qualificationName: "基本情報技術者2",
+        date: "2019-11-01"
+    }
+});
