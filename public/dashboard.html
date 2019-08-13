@@ -13,7 +13,9 @@
   <script defer src="/__/firebase/6.3.5/firebase-database.js"></script>
   <script defer src="/__/firebase/6.3.5/firebase-messaging.js"></script>
   <script defer src="/__/firebase/6.3.5/firebase-storage.js"></script>
+  <script defer src="/__/firebase/6.3.5/firebase-functions.js"></script>
   <!-- initialize the SDK after all desired features are loaded -->
+
   <script defer src="/__/firebase/init.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
@@ -105,6 +107,25 @@
         }
 
       });
+      //apiKeyは見えていても問題ない
+      //いらない？
+      // firebase.initializeApp({
+      //   apiKey: '### FIREBASE API KEY ###',
+      //   authDomain: '### FIREBASE AUTH DOMAIN ###',
+      //   projectId: '### CLOUD FUNCTIONS PROJECT ID ###',
+      //   databaseURL: 'https://### YOUR DATABASE NAME ###.firebaseio.com',
+      // });
+      //とりあえずCloud Functionsをとれるか確認
+      var getQualification = firebase.functions().httpsCallable('getQualification');
+      getQualification().then(function (value) {
+        alert(value.data.qualification)
+      })
+
+
+
+
+
+
     });
   </script>
 
